@@ -719,6 +719,16 @@ const wmts: ol.source.WMTS = new ol.source.WMTS({
 });
 
 //
+// ol.source.Raster.Event
+//
+const rasterEvent = new ol.source.Raster.Event("change", frameState, {});
+
+//
+// ol.source.Vector.Event
+//
+const vectorEvent = new ol.source.Vector.Event("addfeature", feature);
+
+//
 // ol.coordinate
 //
 coordinate = ol.coordinate.add(coordinate, coordinate);

@@ -8624,16 +8624,7 @@ export namespace source {
         setOperation(operation: ol.RasterOperation, opt_lib?: GlobalObject): void;
     }
 
-    /**
-     * @classdesc
-     * Events emitted by {@link ol.source.Raster} instances are instances of this
-     * type.
-     *
-     * @param type Type.
-     * @param frameState The frame state.
-     * @param data An object made available to operations.
-     */
-    class RasterEvent extends events.Event {
+    namespace Raster {
         /**
          * @classdesc
          * Events emitted by {@link ol.source.Raster} instances are instances of this
@@ -8643,26 +8634,37 @@ export namespace source {
          * @param frameState The frame state.
          * @param data An object made available to operations.
          */
-        constructor(type: string, frameState: olx.FrameState, data: GlobalObject);
+        class Event extends events.Event {
+            /**
+             * @classdesc
+             * Events emitted by {@link ol.source.Raster} instances are instances of this
+             * type.
+             *
+             * @param type Type.
+             * @param frameState The frame state.
+             * @param data An object made available to operations.
+             */
+            constructor(type: string, frameState: olx.FrameState, data: GlobalObject);
 
-        /**
-         * The raster extent.
-         * @api
-         */
-        extent: ol.Extent;
+            /**
+             * The raster extent.
+             * @api
+             */
+            extent: ol.Extent;
 
-        /**
-         * The pixel resolution (map units per pixel).
-         * @api
-         */
-        resolution: number;
+            /**
+             * The pixel resolution (map units per pixel).
+             * @api
+             */
+            resolution: number;
 
-        /**
-         * An object made available to all operations.  This can be used by operations
-         * as a storage object (e.g. for calculating statistics).
-         * @api
-         */
-        data: GlobalObject;
+            /**
+             * An object made available to all operations.  This can be used by operations
+             * as a storage object (e.g. for calculating statistics).
+             * @api
+             */
+            data: GlobalObject;
+        }
     }
 
     /**
@@ -9111,7 +9113,7 @@ export namespace source {
      * by this source are suitable for editing. See {@link ol.source.VectorTile} for
      * vector data that is optimized for rendering.
      *
-     * @fires ol.source.VectorEvent
+     * @fires ol.source.Vector.Event
      * @param opt_options Vector source options.
      * @api stable
      */
@@ -9122,7 +9124,7 @@ export namespace source {
          * by this source are suitable for editing. See {@link ol.source.VectorTile} for
          * vector data that is optimized for rendering.
          *
-         * @fires ol.source.VectorEvent
+         * @fires ol.source.Vector.Event
          * @param opt_options Vector source options.
          * @api stable
          */
@@ -9305,15 +9307,7 @@ export namespace source {
         removeFeature(feature: ol.Feature): void;
     }
 
-    /**
-     * @classdesc
-     * Events emitted by {@link ol.source.Vector} instances are instances of this
-     * type.
-     *
-     * @param type Type.
-     * @param opt_feature Feature.
-     */
-    class VectorEvent extends events.Event {
+    namespace Vector {
         /**
          * @classdesc
          * Events emitted by {@link ol.source.Vector} instances are instances of this
@@ -9322,13 +9316,23 @@ export namespace source {
          * @param type Type.
          * @param opt_feature Feature.
          */
-        constructor(type: string, opt_feature?: ol.Feature);
+        class Event extends events.Event {
+            /**
+             * @classdesc
+             * Events emitted by {@link ol.source.Vector} instances are instances of this
+             * type.
+             *
+             * @param type Type.
+             * @param opt_feature Feature.
+             */
+            constructor(type: string, opt_feature?: ol.Feature);
 
-        /**
-         * The feature being added or removed.
-         * @api stable
-         */
-        feature: ol.Feature;
+            /**
+             * The feature being added or removed.
+             * @api stable
+             */
+            feature: ol.Feature;
+        }
     }
 
     /**
